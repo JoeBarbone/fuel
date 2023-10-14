@@ -18,7 +18,6 @@ const Home = () => {
             setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
         getRecords()
-
     }, [])
 
 
@@ -27,7 +26,7 @@ const Home = () => {
             <h1>Fuel Tracker Receipts</h1>
             <table>
                 <tr>
-                    <th>ID</th>
+                    <th>VEHICLE</th>
                     <th>DATE</th>
                     <th>STATION</th>
                     <th>GALLONS</th>
@@ -38,13 +37,13 @@ const Home = () => {
             
             {records.map((record) => {
                 totalGallons += record.gallons;
-                totalPaid += record.total;
+                totalPaid += totalPrice;
                 totalPrice = record.gallons * record.price;
                 return(
                     <div>
                         <table>
                             <tr>
-                                <td>{record.id}</td>
+                                <td>{record.vehicle}</td>
                                 <td>{moment(record.date.toDate()).format("YYYY-MM-DD hh:mm:ssa")}</td>
                                 <td>{record.station}</td>
                                 <td className='justify-right'>{record.gallons}</td>
@@ -56,9 +55,10 @@ const Home = () => {
                 )
                 
             })}
-            <p>Total Gallons: {totalGallons}</p>
-            {/* <p>Total Paid: ${parseFloat(totalPaid).toFixed(2)}</p> */}
-            <p>Total Paid: ${totalPaid}</p>
+            <div className='summary'>
+                <p>Total Gallons: {parseFloat(totalGallons).toFixed(3)}</p>
+                <p>Total Paid: ${parseFloat(totalPaid).toFixed(2)}</p>
+            </div>
         </div>
     )
 }
