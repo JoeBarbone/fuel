@@ -7,12 +7,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBWSRUTAiv15OYZeYBBAv2gwAwoeAw3UBY",
-  authDomain: "vema-e70a5.firebaseapp.com",
-  projectId: "vema-e70a5",
-  storageBucket: "vema-e70a5.appspot.com",
-  messagingSenderId: "740424739667",
-  appId: "1:740424739667:web:68677f12c2e173f4d34fa6"
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: process.env.REACT_APP_MESSAGING_APP_ID
 };
 
 // Initialize Firebase
