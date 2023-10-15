@@ -18,16 +18,17 @@ const Home = () => {
             setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
         getRecords()
+
     }, [])
 
 
     return (
-        <div>
+        <div className='homeContainer tableContainer'>
             <h1>Fuel Tracker Receipts</h1>
             <table>
                 <tr>
-                    <th>VEHICLE</th>
                     <th>DATE</th>
+                    <th>VEHICLE</th>
                     <th>STATION</th>
                     <th>GALLONS</th>
                     <th>PRICE</th>
@@ -36,15 +37,15 @@ const Home = () => {
             </table>
             
             {records.map((record) => {
-                totalGallons += record.gallons;
+                totalGallons += Number(record.gallons);
                 totalPaid += totalPrice;
                 totalPrice = record.gallons * record.price;
                 return(
-                    <div>
+                    <div className='tableContainer'>
                         <table>
                             <tr>
-                                <td>{record.vehicle}</td>
                                 <td>{moment(record.date.toDate()).format("YYYY-MM-DD hh:mm:ssa")}</td>
+                                <td>{record.vehicle}</td>
                                 <td>{record.station}</td>
                                 <td className='justify-right'>{record.gallons}</td>
                                 <td className='justify-right'>${record.price}</td>
