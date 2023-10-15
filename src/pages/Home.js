@@ -38,8 +38,8 @@ const Home = () => {
             
             {records.map((record) => {
                 totalGallons += Number(record.gallons);
-                totalPaid += totalPrice;
                 totalPrice = record.gallons * record.price;
+                totalPaid += totalPrice;
                 return(
                     <div className='tableContainer'>
                         <table>
