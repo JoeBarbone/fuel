@@ -10,6 +10,7 @@ const Report = () => {
     const [records, setRecords] = useState([]);
     const [startDate, setStartDate] = useState()
     const [endDate, setEndDate] = useState()    
+    const [vehicle, setVehicle] = useState()    
 
     let totalGallons = 0;
     let totalPaid = 0;
@@ -19,7 +20,14 @@ const Report = () => {
         event.preventDefault()
         const startDate = new Date(sd)
         const endDate =  new Date(ed)
-        const data = await getDocs(query(fuelCollRef, orderBy("date"), where('date', '>=', startDate), where('date', '<=', endDate)))
+        let data = ""
+
+        if (!vehicle) {
+            data = await getDocs(query(fuelCollRef, orderBy("date"), where('date', '>=', startDate), where('date', '<=', endDate)))
+        } else {
+            data = await getDocs(query(fuelCollRef, orderBy("date"), where('date', '>=', startDate), where('date', '<=', endDate), where('vehicle', '==', vehicle)))
+        }
+        
         setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
     
@@ -30,6 +38,7 @@ const Report = () => {
             <form onSubmit={(event) => getRecords(event, startDate, endDate)}>
                 <input placeholder="Date 01/01/2000" required onChange={(event) => {moment(setStartDate(event.target.value)).toDate()}} />
                 <input placeholder="Date 01/01/2000" required onChange={(event) => {moment(setEndDate(event.target.value)).toDate()}} />
+                <input placeholder="Enter Jeep, Tiger, etc or leave blank for all records" onChange={(event) => {setVehicle(event.target.value)}} />
                 <button type='submit'>Search</button>
             </form>
 
