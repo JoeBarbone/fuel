@@ -5,7 +5,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
+/* Standard elements */
 a {
   text-decoration: none;
 }
@@ -64,6 +64,9 @@ td {
   padding: 5px 10px;
 }
 
+
+
+/* Classes */
 .container {
   background-color: #f2f2f2;
   padding: 25px 50px;
@@ -118,6 +121,9 @@ td {
 }
 
 
+
+
+/* Mobile devices */
 @media only screen and (max-width: 600px) {
 
   table, th, td, .tableContainer {
