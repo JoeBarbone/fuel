@@ -40,7 +40,7 @@ const Home = () => {
                     <th>GALLONS</th>
                     <th>PRICE</th>
                     <th>TOTAL</th>
-                    <th>ACTIONS</th>
+                    {/* <th>ACTIONS</th> */}
                 </tr>
             </table>
             
@@ -58,7 +58,7 @@ const Home = () => {
                                 <td className='justify-right'>{record.gallons}</td>
                                 <td className='justify-right'>${record.price}</td>
                                 <td className='justify-right'>${parseFloat(totalPrice).toFixed(2)}</td>
-                                <td className='justify-center'><img className='deleteIcon' src={deleteIcon} onClick={() => {delRecord(record.id, record.vehicle, record.station)}} /></td>
+                                {/* <td className='justify-center'><img className='deleteIcon' src={deleteIcon} onClick={() => {delRecord(record.id, record.vehicle, record.station)}} /></td> */}
                             </tr>
                         </table>
                     </div>        
