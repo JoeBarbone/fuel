@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { doc, updateDoc, deleteDoc, collection, getDocs, addDoc, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase-config"
 import moment from 'moment/moment';
+import deleteIcon from "../images/delete.png"
 
 const Home = () => {
     const fuelCollRef = collection(db, "fuel");
@@ -22,6 +23,12 @@ const Home = () => {
     }, [])
 
 
+    const delRecord = async (id, ve, st) => {
+        const recordDoc = doc(fuelCollRef, id);
+        await deleteDoc( recordDoc )
+        alert(id + " " + ve + " " + st + " " + " deleted successfully")
+    }
+
     return (
         <div className='homeContainer tableContainer'>
             <h1>Fuel Tracker Receipts</h1>
@@ -33,6 +40,7 @@ const Home = () => {
                     <th>GALLONS</th>
                     <th>PRICE</th>
                     <th>TOTAL</th>
+                    <th>ACTIONS</th>
                 </tr>
             </table>
             
@@ -50,6 +58,7 @@ const Home = () => {
                                 <td className='justify-right'>{record.gallons}</td>
                                 <td className='justify-right'>${record.price}</td>
                                 <td className='justify-right'>${parseFloat(totalPrice).toFixed(2)}</td>
+                                <td className='justify-center'><img className='deleteIcon' src={deleteIcon} onClick={() => {delRecord(record.id, record.vehicle, record.station)}} /></td>
                             </tr>
                         </table>
                     </div>        
