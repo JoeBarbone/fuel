@@ -11,6 +11,7 @@ const Home = () => {
     let totalGallons = 0;
     let totalPaid = 0;
     let totalPrice = 0;
+    let avgPerGallon = 0;
 
     useEffect(() => {
 
@@ -48,6 +49,8 @@ const Home = () => {
                 totalGallons += Number(record.gallons);
                 totalPrice = record.gallons * record.price;
                 totalPaid += totalPrice;
+                avgPerGallon = totalPaid / totalGallons;
+                
                 return(
                     <div className='tableContainer'>
                         <table>
@@ -67,6 +70,7 @@ const Home = () => {
             })}
             <div className='summary'>
                 <p>Total Gallons: {parseFloat(totalGallons).toFixed(3)}</p>
+                <p>Avg Per Gallon: ${parseFloat(avgPerGallon).toFixed(3)}</p>
                 <p>Total Paid: ${parseFloat(totalPaid).toFixed(2)}</p>
             </div>
         </div>

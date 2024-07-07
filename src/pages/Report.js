@@ -15,6 +15,7 @@ const Report = () => {
     let totalGallons = 0;
     let totalPaid = 0;
     let totalPrice = 0;
+    let avgPerGallon = 0;
 
     const getRecords = async (event, sd, ed) => {
         event.preventDefault()
@@ -47,6 +48,8 @@ const Report = () => {
                 totalGallons += Number(record.gallons);
                 totalPrice = record.gallons * record.price;
                 totalPaid += totalPrice;
+                avgPerGallon = totalPaid / totalGallons;
+
                 return(
                     <div className='reportContainer'>
                         <table>
@@ -70,6 +73,7 @@ const Report = () => {
             })}
             <div className='summary'>
                 <p>Total Gallons: {parseFloat(totalGallons).toFixed(3)}</p>
+                <p>Avg Per Gallon: ${parseFloat(avgPerGallon).toFixed(3)}</p>
                 <p>Total Paid: ${parseFloat(totalPaid).toFixed(2)}</p>
             </div>
         </div>
