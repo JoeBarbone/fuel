@@ -24,6 +24,7 @@ const Nav = () => {
                     <li><Link to='/'><img className='icon' src={home} /></Link></li>
                     <li><Link to='/add'><img className='icon' src={add} /></Link></li>
                     <li><Link to='/report'><img className='icon' src={report} /></Link></li>
+                    <li><Link to='/month'><img className='icon' src={report} /></Link></li>
                     {/* <li onClick={showMessage}>Show</li> */}
                 </ul>
             </div>

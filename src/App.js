@@ -4,7 +4,9 @@ import Home from "./pages/Home";
 import Footer from "./pages/Footer";
 import Add from "./pages/Add"
 import Report from "./pages/Report";
+import Month from "./pages/Month";
 import Nopage from "./pages/Nopage";
+
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -20,6 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/add" element={<Add />} />
           <Route path="/report" element={<Report />} />
+          <Route path="/month" element={<Month />} />          
           <Route path="*" element={<Nopage />} />
         </Routes>
         <Footer />
