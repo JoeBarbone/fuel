@@ -27,41 +27,41 @@ const Report = () => {
     // const [endDate, setEndDate] = useState()    
     // const [vehicle, setVehicle] = useState()
      
-    const JanSD = "2024-01-01";
-    const JanED = "2024-01-31"; 
+    const JanSD = "2024-01-01 00:00:00";
+    const JanED = "2024-01-31 11:59:59"; 
 
-    const FebSD = "2024-02-01";
-    const FebED = "2024-02-29";
+    const FebSD = "2024-02-01 00:00:00";
+    const FebED = "2024-02-29 11:59:59";
 
-    const MarSD = "2024-03-01";
-    const MarED = "2024-03-30";
+    const MarSD = "2024-03-01 00:00:00";
+    const MarED = "2024-03-30 11:59:59";
 
-    const AprSD = "2024-04-01";
-    const AprED = "2024-04-30";
+    const AprSD = "2024-04-01 00:00:00";
+    const AprED = "2024-04-30 11:59:59";
 
-    const MaySD = "2024-05-01";
-    const MayED = "2024-05-31";
+    const MaySD = "2024-05-01 00:00:00";
+    const MayED = "2024-05-31 11:59:59";
 
-    const JunSD = "2024-06-01";
-    const JunED = "2024-06-30";
+    const JunSD = "2024-06-01 00:00:00";
+    const JunED = "2024-06-30 11:59:59";
 
-    const JulSD = "2024-07-01";
-    const JulED = "2024-07-31";
+    const JulSD = "2024-07-01 00:00:00";
+    const JulED = "2024-07-31 11:59:59";
 
-    const AugSD = "2024-08-01";
-    const AugED = "2024-08-31";
+    const AugSD = "2024-08-01 00:00:00";
+    const AugED = "2024-08-31 11:59:59";
 
-    const SepSD = "2024-09-01";
-    const SepED = "2024-09-30";
+    const SepSD = "2024-09-01 00:00:00";
+    const SepED = "2024-09-30 11:59:59";
 
-    const OctSD = "2024-10-01";
-    const OctED = "2024-10-31";
+    const OctSD = "2024-10-01 00:00:00";
+    const OctED = "2024-10-31 11:59:59";
 
-    const NovSD = "2024-11-01";
-    const NovED = "2024-11-30";
+    const NovSD = "2024-11-01 00:00:00";
+    const NovED = "2024-11-30 11:59:59";
 
-    const DecSD = "2024-12-01";
-    const DecED = "2024-12-31";
+    const DecSD = "2024-12-01 00:00:00";
+    const DecED = "2024-12-31 11:59:59";
 
     let janTotalGallons = 0;
     let janTotalPaid = 0;
