@@ -6,10 +6,6 @@ import add from "../images/add.png"
 import report from "../images/report.png"
 
 
-const showMessage = () => {
-    alert("Hello MoFos!")
-}
-
 const Nav = () => {
   return (
     <div className='container'>

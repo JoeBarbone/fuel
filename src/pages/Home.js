@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import { doc, updateDoc, deleteDoc, collection, getDocs, addDoc, orderBy, query } from "firebase/firestore";
+import { doc, updateDoc, deleteDoc, collection, getDocs, addDoc, orderBy, query, where } from "firebase/firestore";
 import { db } from "../firebase-config"
 import moment from 'moment/moment';
 import deleteIcon from "../images/delete.png"
@@ -12,16 +12,71 @@ const Home = () => {
     let totalPaid = 0;
     let totalPrice = 0;
     let avgPerGallon = 0;
+    let searchFilter = "";
+    
+    const byAll = async () => {
+        const searchFilter = query(fuelCollRef, orderBy('date','desc'))
+        const data = await getDocs(searchFilter)
+        setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+ 
+    const byGladiator = async () => {
+        const searchFilter = query(fuelCollRef, orderBy('date','desc'), where('vehicle', '==','Gladiator'))
+        const data = await getDocs(searchFilter)
+        setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+
+    const byTiger = async () => {
+        const searchFilter = query(fuelCollRef, orderBy('date','desc'), where('vehicle', '==','Tiger'))
+        const data = await getDocs(searchFilter)
+        setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+    
+    const byHonda = async () => {
+        const searchFilter = query(fuelCollRef, orderBy('date','desc'), where('vehicle', '==','Honda'))
+        const data = await getDocs(searchFilter)
+        setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+
+    const by2025 = async () => {
+        // clearly this doesn't work, I have to add the logic to select by year
+        const searchFilter = query(fuelCollRef, orderBy('date','desc'), where('date', '>=', moment('01/01/2025').toDate()), where('date', '<=', moment('12/31/2025').toDate()))
+        const data = await getDocs(searchFilter)
+        setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+
+    const by2024 = async () => {
+        // clearly this doesn't work, I have to add the logic to select by year
+        const searchFilter = query(fuelCollRef, orderBy('date','desc'), where('date', '>=', moment('01/01/2024').toDate()), where('date', '<=', moment('12/31/2024').toDate()))
+        const data = await getDocs(searchFilter)
+        setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+
+    const by2023 = async () => {
+        // clearly this doesn't work, I have to add the logic to select by year
+        const searchFilter = query(fuelCollRef, orderBy('date','desc'), where('date', '>=', moment('01/01/2023').toDate()), where('date', '<=', moment('12/31/2023').toDate()))
+        const data = await getDocs(searchFilter)
+        setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+    
+    
 
     useEffect(() => {
 
+        
+
         const getRecords = async () => {
+
             const data = await getDocs(query(fuelCollRef, orderBy("date","desc")))
             setRecords(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        
         }
+        
         getRecords()
 
     }, [])
+
+    
 
 
     const delRecord = async (id, ve, st) => {
@@ -33,6 +88,13 @@ const Home = () => {
     return (
         <div className='homeContainer tableContainer'>
             <h1>Fuel Tracker Receipts</h1>
+            <button onClick={byAll}>All Records</button>
+            <button onClick={byGladiator}>Gladiator</button>
+            <button onClick={byTiger}>Tiger</button>
+            <button onClick={byHonda}>Honda</button>
+            <button onClick={by2025}>2025</button>
+            <button onClick={by2024}>2024</button>
+            <button onClick={by2023}>2023</button>
             <table>
                 <tr>
                     <th>DATE</th>

@@ -15,6 +15,7 @@ button {
   background-color: #6c6c6c;
   color: white;
   font-weight: bold;
+  margin: 10px;
 }
 
 form {
