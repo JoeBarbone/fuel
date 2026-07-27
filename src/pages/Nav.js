@@ -15,7 +15,7 @@ const Nav = () => {
     <div className='container'>
         <div className='row'>
             <div className='col'>   
-                <img className='logo-img' src={logo} />
+                <a href='/'><img className='logo-img' src={logo} /></a> 
                 {/* <h3>Keep accurate records of your spending</h3> */}
             </div>
 

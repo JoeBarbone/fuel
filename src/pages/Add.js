@@ -33,8 +33,9 @@ const Add = () => {
     }
 
     return (
-    <div>
-        <h1>Add new record</h1>
+    
+    <div className='homeContainer tableContainer'>
+        <h1>Add new record</h1>    
         <form>
           <input placeholder="Date 01/01/2000 13:25:00" required onChange={(event) => {moment(setNewDate(event.target.value)).toDate()}} />
           <input placeholder="Gallons" required onChange={(event) => {setNewGallons(event.target.value)}} />
